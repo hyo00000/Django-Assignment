@@ -19,6 +19,8 @@ from django.urls import path
 from django.http import HttpResponse
 from django.shortcuts import render
 from fake_db import user_db
+from todo import views
+
 
 def index(request):
     return HttpResponse('<h1>hello</h1>')
@@ -43,9 +45,12 @@ def user_info(request, user_id):
     return render(request, 'user_info.html',{'user':user})
 
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
     path('users/', user_list, name='user_list'),
     path('name/<int:user_id>/', user_info, name='user_info'),
+    path('todo/', views.todo),
+    path('todo/<int:pk>/', views.todo_info),
 ]
