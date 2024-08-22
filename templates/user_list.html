@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% for user_id, user in users %}
+        <a href="/name/{{ user_id }}">{{ user.이름 }}</a><br>
+    {% endfor %}
+</body>
+</html>

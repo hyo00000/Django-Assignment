@@ -1,0 +1,7 @@
+.idea/
+.venv/
+fake_db.py
+.DS_Store
+db.sqlite
+.python-version
+poetry.lock
