@@ -1,14 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-      <h1>{{ data.title }}</h1>
-            <hr>
-            {% for key, value in data.items %}
-                <p>{{ key }}: {{ value }}</p>
-            {% endfor %}
-</body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+    <h1>{{ todo.title }}</h1>
+    {% if request.user == todo.author %}
+        <div style="text-align: right">
+            <a href="{% url 'todo_update' todo.pk %}">수정</a>
+            <form action="{% url 'todo_delete' todo.pk %}" method ="POST" style="display:inline">
+                {% csrf_token %}
+                <button>삭제</button>
+            </form>
+        </div>
+    {% endif %}
+    <div style="text-align: right">
+        {{ todo.author.username }}
+    </div>
+    <hr>
+    {{ todo.description }}
+{#    {% for key, value in info.items %}#}
+{#      <p>{{ key }}: {{ value }}</p>#}
+{#    {% endfor %}#}
+    <hr>
+    <a href="{% url 'todo' %}">이전 페이지 이동</a>
+{% endblock %}

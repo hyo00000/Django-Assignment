@@ -19,7 +19,12 @@ def sign_up(request):
 def login(request):
     form = AuthenticationForm(request, request.POST or None)
     if form.is_valid():
-        django_login(request, form.get_user)
+        django_login(request, form.get_user())
+
+        next = request.GET.get('next')
+        if next:
+            return redirect(next)
+
         return redirect(reverse('todo'))
     context = {
         'form':form

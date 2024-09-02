@@ -1,29 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <nav>
-        <div style="text-align: right;">
-            {% if request.user.is_authenticated %}
-            <form action="{% url 'logout' %}" method="POST" style="display: inline">
-                {% csrf_token %}
-                 <button>로그아웃</button>
-            </form>
-            {{ request.user.username }}
-            {% else %}
-                <a href="{% url 'signup' %}">회원가입</a>
-                <a href="{% url 'login' %}">로그인</a>
-            {% endif %}
-        </div>
-    </nav>
+{% extends 'base.html' %}
+{% block content %}
     <h1>Todo list</h1>
+
+    <p style="text-align: right">
+        <a href="{% url 'todo_create' %}">생성</a>
+    </p>
+
     {% for todo in todo_list %}
-        <a href="/todo/{{ todo.id }}/">
-            {{ todo.id }}   {{ todo.title }}
+        <a href="{% url 'todo_info' todo.pk %}">
+            ({{ todo.id }}) {{ todo.title }} <span>({{ todo.author.username }})</span>
         </a><br>
     {% endfor %}
-</body>
-</html>
+{% endblock %}
