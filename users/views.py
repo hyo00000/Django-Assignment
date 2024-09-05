@@ -25,7 +25,7 @@ def login(request):
         if next:
             return redirect(next)
 
-        return redirect(reverse('todo'))
+        return redirect(reverse('todo:list'))
     context = {
         'form':form
     }

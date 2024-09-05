@@ -7,7 +7,7 @@
 <body>
     <nav>
         <div style="display: flex; justify-content: space-between"> 
-            <a href="{% url 'todo' %}">홈</a>
+            <a href="{% url 'todo:list' %}">홈</a>
         </div>
         <div style="text-align: right;">
             {% if request.user.is_authenticated %}
@@ -23,5 +23,6 @@
         </div>
     </nav>
     {% block content %}{% endblock %}
+    {% block js %}{% endblock %}
 </body>
 </html>
