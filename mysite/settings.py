@@ -43,7 +43,9 @@ OWN_APPS = [
     'users',
 ]
 
-THIRD_PARTY_APPS = []
+THIRD_PARTY_APPS = [
+    'django_extensions',
+]
 
 INSTALLED_APPS = DJANGO_APPS + OWN_APPS + THIRD_PARTY_APPS
 
@@ -133,6 +135,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # LOGIN
 
-LOGIN_REDIRECT_URL = '/todo/'
+LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/account/login/'
-LOGOUT_REDIRECT_URL = '/todo/'
+LOGOUT_REDIRECT_URL = '/'
